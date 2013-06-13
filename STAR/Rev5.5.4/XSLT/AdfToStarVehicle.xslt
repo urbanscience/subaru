@@ -41,16 +41,31 @@
 									</star:MakeString>
 								</xsl:if>
 									<xsl:if test="@status">
-										<star:SaleClassCode>
+										
 											<xsl:choose>
 												<xsl:when test="@status = 'used-certified'">
+                          <star:SaleClassCode>
 													<xsl:text>Used</xsl:text>
+                          </star:SaleClassCode>
 												</xsl:when>
-												<xsl:otherwise>
+
+                        <xsl:when test="@status = 'used'">
+                          <star:SaleClassCode>
+                            <xsl:text>Used</xsl:text>
+                          </star:SaleClassCode>
+                        </xsl:when>
+
+                        <xsl:when test="@status = 'new'">
+                          <star:SaleClassCode>
+                            <xsl:text>New</xsl:text>
+                          </star:SaleClassCode>
+                        </xsl:when>
+                        
+												<!--<xsl:otherwise>
 													<xsl:value-of select="concat(translate(substring(@status,1,1), $lowercase,$uppercase), substring(@status,2))"/>
-												</xsl:otherwise>
-											</xsl:choose>
-										</star:SaleClassCode>
+												</xsl:otherwise>-->
+                        </xsl:choose>
+										
 									</xsl:if>
 									<xsl:if test="condition/text()!=''">
 										<star:Condition>
