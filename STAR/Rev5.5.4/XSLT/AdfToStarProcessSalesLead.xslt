@@ -100,6 +100,11 @@
 						<xsl:variable name="varCustomer" select="$varRoot/adf/prospect/customer"></xsl:variable>
 						<star:CustomerProspect>
 							<star:ProspectParty>
+                <xsl:if test="$varCustomer/contact/name/@type">
+                  <star:RelationshipTypeCode>
+                    <xsl:value-of select="$varCustomer/contact/name/@type"></xsl:value-of>
+                  </star:RelationshipTypeCode>
+                </xsl:if>
 								<xsl:if test="$varRoot/adf/prospect/customer/timeframe/description">
                   <xsl:if test="string($varRoot/adf/prospect/customer/timeframe/description)!=''">
                     <star:SpecialRemarksDescription>
@@ -111,9 +116,6 @@
 									<star:PartyID>
 										<xsl:value-of select="$varCustomer/id"/>
 									</star:PartyID>
-								</xsl:if>
-								<xsl:if test="$varCustomer/contact/name/@type">
-									<star:RelationshipTypeCode><xsl:value-of select="$varCustomer/contact/name/@type"></xsl:value-of></star:RelationshipTypeCode>
 								</xsl:if>
 								<!-- SpecifiedPerson -->
 								<xsl:apply-templates select="$varCustomer/contact"></xsl:apply-templates>
