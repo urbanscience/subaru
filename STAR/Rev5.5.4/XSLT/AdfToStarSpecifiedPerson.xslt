@@ -187,8 +187,9 @@
 						<xsl:when test="@type='voice' and @time='nopreference'">No Preference</xsl:when>
 						<xsl:when test="@type='voice' and @time='morning'">Morning</xsl:when>
 						<xsl:when test="@type='voice' and not(@time)">Day Phone</xsl:when>
-						<xsl:when test="@type='voice' and (@time!='day' or @time!='evening' or @time!='afternoon' or @time!='nopreference')">Day Phone</xsl:when>
-						<xsl:when test="@type='pager' ">Pager</xsl:when>
+						<!--<xsl:when test="@type='voice' and (@time!='day' or @time!='evening' or @time!='afternoon' or @time!='nopreference')">Day Phone</xsl:when>-->
+            <xsl:when test="@type='voice' and not(@time='day') and not(@time!='evening') and not(@time='afternoon') and not(@time='nopreference')">Day Phone</xsl:when>
+            <xsl:when test="@type='pager' ">Pager</xsl:when>
 						<xsl:when test="@type='cell' or @type='cellphone' ">Cell Phone</xsl:when>
 						<xsl:otherwise>Other</xsl:otherwise>
 					</xsl:choose>
@@ -223,7 +224,8 @@
                 <xsl:when test="$varPhoneType='voice' and $varPhoneTime='afternoon' ">Day Phone</xsl:when>
                 <xsl:when test="$varPhoneType='voice' and $varPhoneTime='nopreference' ">Day Phone</xsl:when>
                 <xsl:when test="$varPhoneType='voice' and $varPhoneTime='morning' ">Day Phone</xsl:when>
-                <xsl:when test="$varPhoneType='voice' and ($varPhoneTime!='day' or $varPhoneTime!='evening' or $varPhoneTime!='afternoon' or $varPhoneTime!='nopreference') ">Day Phone</xsl:when>
+                <xsl:when test="$varPhoneType='voice' and (not($varPhoneTime='day') and not($varPhoneTime='evening') and not($varPhoneTime='afternoon') and not($varPhoneTime='nopreference')) ">Day Phone</xsl:when>
+                <!--<xsl:when test="$varPhoneType='voice' and ($varPhoneTime!='day' or $varPhoneTime!='evening' or $varPhoneTime!='afternoon' or $varPhoneTime!='nopreference') ">Day Phone</xsl:when>-->
                 <xsl:when test="$varPhoneType='voice' and $varPhoneTime='' ">Day Phone</xsl:when>
                 <xsl:when test="$varPhoneType='fax' ">Home Fax</xsl:when>
                 <xsl:when test="$varPhoneType='pager' ">Pager</xsl:when>
