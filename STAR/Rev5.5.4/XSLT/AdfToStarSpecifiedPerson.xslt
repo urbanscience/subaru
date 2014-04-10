@@ -205,7 +205,6 @@
 				</star:URICommunication>
 			</xsl:for-each>
 
-
       <xsl:if test="email/@preferredcontact or phone/@preferredcontact" >
         <star:ContactMethodTypeCode>
           <xsl:variable name="varPhoneTime" select="/adf/prospect/customer/contact/phone[@preferredcontact='1']/@time"></xsl:variable>
